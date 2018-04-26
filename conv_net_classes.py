@@ -408,7 +408,7 @@ class LeNetConvPoolLayer(object):
         if self.non_linear=="tanh":
             conv_out_tanh = T.tanh(conv_out + self.b.dimshuffle('x', 0, 'x', 'x'))
             output = downsample.max_pool_2d(input=conv_out_tanh, ds=self.poolsize, ignore_border=True)
-        if self.non_linear=="relu":
+        elif self.non_linear=="relu":
             conv_out_tanh = ReLU(conv_out + self.b.dimshuffle('x', 0, 'x', 'x'))
             output = downsample.max_pool_2d(input=conv_out_tanh, ds=self.poolsize, ignore_border=True)
         else:
